@@ -29,6 +29,19 @@
     "react/forbid-prop-types": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "no-unused-vars": "off",
+    "no-undef": "off",
+    "indent": "off",
+    "no-trailing-spaces": "off",
+    "brace-style": "off",
+    "object-curly-newline": "off",
+    "eol-last": "off",
+    "react/prop-types": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-max-props-per-line": "off",
+    "quotes": "off",
+    "max-len": "off"
   }
 }
