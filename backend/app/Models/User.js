@@ -7,6 +7,25 @@ const Model = use('Model')
 const Hash = use('Hash')
 
 class User extends Model {
+
+  static search(data)
+  {
+    const users = this.query()
+    .where(function () {
+
+      if (!!data.username) {
+        this.where('username', data.username);
+      }
+
+      if (!!data.email) {
+        this.orWhere('email', data.email);
+      }
+
+    }).fetch();
+
+    return users;
+  }
+
   static boot () {
     super.boot()
 
