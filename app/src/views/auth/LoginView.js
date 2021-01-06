@@ -6,8 +6,9 @@ import {
   Button
 } from '@material-ui/core';
 import { Form } from '@unform/web';
+import { TextField } from 'unform-material-ui';
 import Page from 'src/components/Page';
-import Input from 'src/components/Input';
+// import Input from 'src/components/Input';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,12 +41,35 @@ const LoginView = () => {
 
           <Form onSubmit={handleSubmit}>
 
-            <Input name="email" label="E-mail" type="email" />
-            <Input name="password" label="Senha" type="password" />
+            <TextField
+              fullWidth
+              label="Email"
+              margin="normal"
+              name="email"
+              type="email"
+              variant="outlined"
+            />
+            <TextField
+              fullWidth
+              label="Senha"
+              margin="normal"
+              name="password"
+              type="password"
+              variant="outlined"
+            />
 
-            <Button variant="contained" color="primary">
-              Primary
-            </Button>
+            <Box my={2}>
+              <Button
+                color="primary"
+                // disabled={isSubmitting}
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+              >
+                Entrar
+              </Button>
+            </Box>
 
           </Form>
 
