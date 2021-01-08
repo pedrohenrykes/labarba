@@ -9,6 +9,7 @@ import { Form } from '@unform/web';
 import { TextField } from 'unform-material-ui';
 import Page from 'src/components/Page';
 // import Input from 'src/components/Input';
+import Api from 'src/resources/Api';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,8 +23,36 @@ const useStyles = makeStyles((theme) => ({
 const LoginView = () => {
   const classes = useStyles();
 
-  function handleSubmit(data) {
-    console.log(data);
+  async function handleSubmit(data) 
+  {
+    try {
+
+      const response = await Api.get('users/search', {
+        params: { email: data.email }
+      });
+
+      const user = response.data[0];
+
+      if (user) {
+
+        /* if ((user.email === data.email) && (user.password === )) {
+          console.log('Logged!');
+        } else {
+          console.log('Not logged.');
+        } */
+
+      } else {
+
+        console.log('Not a user.');
+
+      }
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
   }
 
   return (
