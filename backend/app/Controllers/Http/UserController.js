@@ -13,7 +13,7 @@ class UserController
 
   async search ({ request, response })
   {
-    const data = request.only(['username', 'email']);
+    const data = request.only(['id', 'username', 'email']);
 
     if (Object.keys(data).length > 0) {
 
@@ -102,7 +102,6 @@ class UserController
 
     }
   }
-
 }
 
 module.exports = UserController

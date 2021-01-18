@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { 
   Box, 
   Container, 
@@ -8,7 +9,6 @@ import {
 import { Form } from '@unform/web';
 import { TextField } from 'unform-material-ui';
 import Page from 'src/components/Page';
-// import Input from 'src/components/Input';
 import Api from 'src/resources/Api';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,38 +21,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginView = () => {
-  const classes = useStyles();
 
-  async function handleSubmit(data) 
+  const classes = useStyles();
+  const [isLogged, setIsLogged] = useState(false);
+
+  async function login(data)
   {
     try {
 
-      const response = await Api.get('users/search', {
-        params: { email: data.email }
+      const response = await Api.post('auth/login', {
+        email: data.email,
+        password: data.password 
       });
-
-      const user = response.data[0];
-
-      if (user) {
-
-        /* if ((user.email === data.email) && (user.password === )) {
-          console.log('Logged!');
-        } else {
-          console.log('Not logged.');
-        } */
-
-      } else {
-
-        console.log('Not a user.');
-
-      }
+  
+      setIsLogged(response.data.success);
 
     } catch (err) {
 
-      console.log(err);
+      alert(err.message);
 
     }
+  }
 
+  function handleSubmit(data) 
+  {
+    login(data);
+  }
+
+  if (isLogged) {
+    return <Navigate to="/app" />;
   }
 
   return (
@@ -90,7 +87,6 @@ const LoginView = () => {
             <Box my={2}>
               <Button
                 color="primary"
-                // disabled={isSubmitting}
                 fullWidth
                 size="large"
                 type="submit"
@@ -106,6 +102,7 @@ const LoginView = () => {
       </Box>
     </Page>
   );
+
 };
 
 export default LoginView;

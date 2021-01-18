@@ -14,8 +14,7 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: 'flex',
     flex: '1 1 auto',
-    overflow: 'hidden',
-    // paddingTop: 64
+    overflow: 'hidden'
   },
   contentContainer: {
     display: 'flex',
@@ -34,7 +33,6 @@ const MainLayout = () => {
 
   return (
     <div className={classes.root}>
-      {/* <TopBar /> */}
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
